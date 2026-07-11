@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Client;
-use App\Models\Coupon;
 use App\Models\Country;
+use App\Models\Coupon;
 use App\Models\Representative;
 use Illuminate\Http\Request;
 use Redot\Http\Controllers\Controller;
