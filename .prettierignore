@@ -1,0 +1,7 @@
+public/vendor
+public/assets/dist/*
+lang/*
+storage
+composer.lock
+*.yml
+*.yaml

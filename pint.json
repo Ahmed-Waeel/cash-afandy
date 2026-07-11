@@ -1,0 +1,10 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "no_multiple_statements_per_line": false,
+        "control_structure_braces": false,
+        "concat_space": {
+            "spacing": "one"
+        }
+    }
+}

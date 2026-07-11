@@ -1,0 +1,50 @@
+<?php
+
+use App\Http\Controllers\Website\HealthCheckController;
+use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Website\ProfileController;
+use App\Http\Controllers\Website\ShortenedUrlController;
+use App\Http\Controllers\Website\StaticPageController;
+use Illuminate\Support\Facades\Route;
+use Redot\Auth\Facades\RedotAuth;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application.
+|
+*/
+
+Route::get('/', HomeController::class)->name('index');
+Route::get('up', HealthCheckController::class)->name('health-check');
+Route::get('r/{shortenedUrl?}', [ShortenedUrlController::class, 'show'])->name('shortened-urls.show');
+Route::get('static-pages/{staticPage}', [StaticPageController::class, 'show'])->name('static-pages.show');
+
+Route::middleware('auth:users')->group(function () {
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register auth routes for your website.
+|
+*/
+
+RedotAuth::routes(
+    guard: 'users',
+    views: [
+        'login' => 'website.auth.login',
+        'register' => 'website.auth.register',
+        'forgot-password' => 'website.auth.forgot-password',
+        'reset-password' => 'website.auth.reset-password',
+        'magic-link' => 'website.auth.magic-link',
+        'magic-link-code' => 'website.auth.magic-link-code',
+        'verify-email' => 'website.auth.verify-email',
+    ],
+);

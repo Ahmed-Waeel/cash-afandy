@@ -1,0 +1,4 @@
+footer .nav .nav-item .nav-link:hover {
+    background-color: unset;
+    color: var(--tblr-primary);
+}
