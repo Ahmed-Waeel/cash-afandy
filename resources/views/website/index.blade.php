@@ -1,4 +1,8 @@
 <x-layouts::website>
+    @if ($sliders->isNotEmpty())
+        @include('website.home.partials.hero-slider')
+    @endif
+
     <div class="container">
         <div class="row row-deck row-cards">
             <div class="col-4">

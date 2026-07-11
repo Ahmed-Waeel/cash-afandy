@@ -2,6 +2,7 @@
     @themer('website-theme')
 
     @pushOnce('styles')
+        <link rel="stylesheet" href="{{ hashed_asset('vendor/swiper/swiper-bundle.min.css') }}" />
         <link rel="stylesheet" href="{{ hashed_asset('assets/css/website.css') }}" />
 
         {!! setting('head_code') !!}
@@ -27,6 +28,7 @@
     @include('components.facebook-pixel')
 
     @pushOnce('scripts')
+        <script src="{{ hashed_asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
         <script src="{{ hashed_asset('assets/js/website.js') }}"></script>
 
         {!! setting('body_code') !!}

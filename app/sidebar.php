@@ -124,6 +124,11 @@ return Sidebar::make([
                 ->title(__('Posts'))
                 ->route('dashboard.posts.index')
                 ->icon('fa fa-blog'),
+
+            Item::make()
+                ->title(__('Sliders'))
+                ->route('dashboard.sliders.index')
+                ->icon('fa fa-images'),
         ]),
 
     Item::make()

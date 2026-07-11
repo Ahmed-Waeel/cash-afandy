@@ -24,6 +24,7 @@ use App\Http\Controllers\Dashboard\RevertLanguageTokensController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\ShortenedUrlController;
+use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\StaticPageController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\UserImpersonateController;
@@ -60,6 +61,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('cashbacks', CashbackController::class)->except(['show']);
     Route::resource('news', NewsController::class)->except(['show']);
     Route::resource('posts', PostController::class)->except(['show']);
+    Route::resource('sliders', SliderController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
