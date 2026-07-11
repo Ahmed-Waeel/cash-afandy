@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\PublishLanguageTokensController;
 use App\Http\Controllers\Dashboard\QrCodeController;
+use App\Http\Controllers\Dashboard\RepresentativeController;
 use App\Http\Controllers\Dashboard\RevertLanguageTokensController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\SettingController;
@@ -50,6 +51,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('clients', ClientController::class)->except(['show']);
     Route::resource('brokers', BrokerController::class)->except(['show']);
+    Route::resource('brokers.representatives', RepresentativeController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
