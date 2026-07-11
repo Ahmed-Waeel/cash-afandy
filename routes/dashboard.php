@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\ExtractLanguageTokensController;
 use App\Http\Controllers\Dashboard\LanguageController;
 use App\Http\Controllers\Dashboard\LanguageTokenController;
 use App\Http\Controllers\Dashboard\MemoController;
+use App\Http\Controllers\Dashboard\NewsController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\PublishLanguageTokensController;
@@ -56,6 +57,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('brokers.representatives', RepresentativeController::class)->except(['show']);
     Route::resource('coupons', CouponController::class)->except(['show']);
     Route::resource('cashbacks', CashbackController::class)->except(['show']);
+    Route::resource('news', NewsController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {

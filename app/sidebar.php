@@ -114,6 +114,11 @@ return Sidebar::make([
                 ->title(__('Cashbacks'))
                 ->route('dashboard.cashbacks.index')
                 ->icon('fa fa-piggy-bank'),
+
+            Item::make()
+                ->title(__('News'))
+                ->route('dashboard.news.index')
+                ->icon('fa fa-newspaper'),
         ]),
 
     Item::make()
