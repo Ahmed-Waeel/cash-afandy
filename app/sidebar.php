@@ -109,6 +109,11 @@ return Sidebar::make([
                 ->title(__('Coupons'))
                 ->route('dashboard.coupons.index')
                 ->icon('fa fa-ticket'),
+
+            Item::make()
+                ->title(__('Cashbacks'))
+                ->route('dashboard.cashbacks.index')
+                ->icon('fa fa-piggy-bank'),
         ]),
 
     Item::make()

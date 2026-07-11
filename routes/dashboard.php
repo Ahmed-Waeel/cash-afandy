@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AdminImpersonateController;
 use App\Http\Controllers\Dashboard\AdminNotificationController;
 use App\Http\Controllers\Dashboard\BrokerController;
+use App\Http\Controllers\Dashboard\CashbackController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\CouponController;
@@ -54,6 +55,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('brokers', BrokerController::class)->except(['show']);
     Route::resource('brokers.representatives', RepresentativeController::class)->except(['show']);
     Route::resource('coupons', CouponController::class)->except(['show']);
+    Route::resource('cashbacks', CashbackController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
