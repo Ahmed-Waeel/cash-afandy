@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\AdminNotificationController;
 use App\Http\Controllers\Dashboard\BrokerController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ClientController;
+use App\Http\Controllers\Dashboard\CouponController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ExtractLanguageTokensController;
 use App\Http\Controllers\Dashboard\LanguageController;
@@ -52,6 +53,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('clients', ClientController::class)->except(['show']);
     Route::resource('brokers', BrokerController::class)->except(['show']);
     Route::resource('brokers.representatives', RepresentativeController::class)->except(['show']);
+    Route::resource('coupons', CouponController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {

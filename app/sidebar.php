@@ -104,6 +104,11 @@ return Sidebar::make([
                 ->title(__('Brokers'))
                 ->route('dashboard.brokers.index')
                 ->icon('fa fa-handshake'),
+
+            Item::make()
+                ->title(__('Coupons'))
+                ->route('dashboard.coupons.index')
+                ->icon('fa fa-ticket'),
         ]),
 
     Item::make()
