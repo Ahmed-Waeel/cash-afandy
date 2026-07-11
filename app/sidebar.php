@@ -87,6 +87,16 @@ return Sidebar::make([
         ]),
 
     Item::make()
+        ->title(__('Cash Afandy'))
+        ->icon('fa fa-piggy-bank')
+        ->children([
+            Item::make()
+                ->title(__('Categories'))
+                ->route('dashboard.categories.index')
+                ->icon('fa fa-tags'),
+        ]),
+
+    Item::make()
         ->title(__('Settings'))
         ->icon('fa fa-cog')
         ->children([

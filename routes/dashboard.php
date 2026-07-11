@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AdminImpersonateController;
 use App\Http\Controllers\Dashboard\AdminNotificationController;
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ExtractLanguageTokensController;
 use App\Http\Controllers\Dashboard\LanguageController;
@@ -42,6 +43,9 @@ Route::middleware('auth:admins')->group(function () {
     if (config('redot.features.website.enabled')) {
         Route::resource('static-pages', StaticPageController::class)->except(['show']);
     }
+
+    /* --------- Cash Afandy --------- */
+    Route::resource('categories', CategoryController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
