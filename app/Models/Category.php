@@ -82,6 +82,14 @@ class Category extends Model
     }
 
     /**
+     * Get the posts in the category.
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    /**
      * Get the route key for the model.
      */
     public function getRouteKeyName(): string

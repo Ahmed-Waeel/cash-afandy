@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\LanguageTokenController;
 use App\Http\Controllers\Dashboard\MemoController;
 use App\Http\Controllers\Dashboard\NewsController;
 use App\Http\Controllers\Dashboard\NotificationController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\PublishLanguageTokensController;
 use App\Http\Controllers\Dashboard\QrCodeController;
@@ -58,6 +59,7 @@ Route::middleware('auth:admins')->group(function () {
     Route::resource('coupons', CouponController::class)->except(['show']);
     Route::resource('cashbacks', CashbackController::class)->except(['show']);
     Route::resource('news', NewsController::class)->except(['show']);
+    Route::resource('posts', PostController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {

@@ -119,6 +119,11 @@ return Sidebar::make([
                 ->title(__('News'))
                 ->route('dashboard.news.index')
                 ->icon('fa fa-newspaper'),
+
+            Item::make()
+                ->title(__('Posts'))
+                ->route('dashboard.posts.index')
+                ->icon('fa fa-blog'),
         ]),
 
     Item::make()
