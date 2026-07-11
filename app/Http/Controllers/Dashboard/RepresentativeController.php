@@ -50,7 +50,7 @@ class RepresentativeController extends Controller
 
         $broker->representatives()->create($validated);
 
-        return $this->created(__('Representative'));
+        return $this->created(__('Representative'), 'dashboard.brokers.representatives.index', ['broker' => $broker]);
     }
 
     /**
@@ -83,7 +83,7 @@ class RepresentativeController extends Controller
 
         $representative->update($validated);
 
-        return $this->updated(__('Representative'));
+        return $this->updated(__('Representative'), 'dashboard.brokers.representatives.index', ['broker' => $broker]);
     }
 
     /**
@@ -93,6 +93,6 @@ class RepresentativeController extends Controller
     {
         $representative->delete();
 
-        return $this->deleted(__('Representative'));
+        return $this->deleted(__('Representative'), 'dashboard.brokers.representatives.index', ['broker' => $broker]);
     }
 }
