@@ -25,6 +25,7 @@ Route::get('static-pages/{staticPage}', [StaticPageController::class, 'show'])->
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('profile/preferences', [ProfileController::class, 'updatePreferences'])->name('profile.preferences.update');
 });
 
 /*

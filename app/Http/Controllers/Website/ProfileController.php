@@ -47,4 +47,20 @@ class ProfileController extends Controller
 
         return $this->updated(__('Profile'));
     }
+
+    /**
+     * Update the authenticated user's preferences.
+     */
+    public function updatePreferences(Request $request)
+    {
+        $validated = $request->validate([
+            'theme' => ['required', 'string', 'in:light,dark'],
+            'language' => ['required', 'string', 'in:' . implode(',', setting('website_locales'))],
+            'country_id' => ['nullable', 'exists:countries,id'],
+        ]);
+
+        $request->user()->preferences()->update($validated);
+
+        return $this->updated(__('Preferences'));
+    }
 }
