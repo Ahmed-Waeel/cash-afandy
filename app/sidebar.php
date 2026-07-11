@@ -94,6 +94,11 @@ return Sidebar::make([
                 ->title(__('Categories'))
                 ->route('dashboard.categories.index')
                 ->icon('fa fa-tags'),
+
+            Item::make()
+                ->title(__('Clients'))
+                ->route('dashboard.clients.index')
+                ->icon('fa fa-store'),
         ]),
 
     Item::make()
