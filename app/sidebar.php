@@ -99,6 +99,11 @@ return Sidebar::make([
                 ->title(__('Clients'))
                 ->route('dashboard.clients.index')
                 ->icon('fa fa-store'),
+
+            Item::make()
+                ->title(__('Brokers'))
+                ->route('dashboard.brokers.index')
+                ->icon('fa fa-handshake'),
         ]),
 
     Item::make()

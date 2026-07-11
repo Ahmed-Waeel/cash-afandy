@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AdminImpersonateController;
 use App\Http\Controllers\Dashboard\AdminNotificationController;
+use App\Http\Controllers\Dashboard\BrokerController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -48,6 +49,7 @@ Route::middleware('auth:admins')->group(function () {
     /* --------- Cash Afandy --------- */
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('clients', ClientController::class)->except(['show']);
+    Route::resource('brokers', BrokerController::class)->except(['show']);
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
