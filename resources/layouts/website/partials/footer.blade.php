@@ -1,8 +1,38 @@
-<div class="border-top" style="background: var(--tblr-bg-surface)">
+<div class="border-top site-footer" style="background: var(--tblr-bg-surface)">
     <footer class="container py-5">
         <div class="row">
-            <div class="col-6 col-md-3 mb-3">
-                <h5>{{ __('Quick Links') }}</h5>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <h5>{{ __('About :app', ['app' => app_name()]) }}</h5>
+
+                <p class="text-body-secondary">
+                    {{ __('footer_about_description') }}
+                </p>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h5>{{ __('Our Services') }}</h5>
+
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('All Categories') }}</a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('Coupons') }}</a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('Cashback') }}</a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('About Us') }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h5>{{ __('Important Links') }}</h5>
 
                 <ul class="nav flex-column">
                     @foreach (\App\Models\StaticPage::select('title', 'slug')->get() as $page)
@@ -13,79 +43,63 @@
                             </a>
                         </li>
                     @endforeach
-                </ul>
-            </div>
-
-            <div class="col-6 col-md-3 mb-3">
-                <h5>{{ __('Reach Out') }}</h5>
-
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-body-secondary">
-                            <i class="fas fa-envelope me-2"></i>
-                            <span>info@example.com</span>
-                        </a>
-                    </li>
 
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-body-secondary">
-                            <i class="fas fa-address-card me-2"></i>
-                            <span>123 Main St, Anytown, USA</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-body-secondary">
-                            <i class="fas fa-phone me-2"></i>
-                            <span>+201234567890</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-body-secondary">
-                            <i class="fab fa-whatsapp me-2"></i>
-                            <span>+201234567890</span>
-                        </a>
+                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('Be a Partner') }}</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-md-5 offset-md-1 mb-3">
+            <div class="col-12 col-lg-4">
                 <x-form>
-                    <h5>{{ __('Subscribe to our newsletter') }}</h5>
-                    <p>{{ __('Get the latest news and updates.') }}</p>
+                    <h5>{{ __('Subscribe Now') }}</h5>
 
-                    <div class="d-flex flex-column flex-sm-row align-items-start gap-2">
-                        <x-input type="email" name="email" :placeholder="__('Enter your email')" validation="required" />
-                        <button class="btn btn-primary" type="submit">{{ __('Subscribe') }}</button>
+                    <div class="site-footer-subscribe input-group mb-3">
+                        <x-input type="email" name="email" :placeholder="__('Email Address')" validation="required" />
+                        <button class="btn btn-brand" type="submit">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
                     </div>
+
+                    <x-radios name="gender" :options="['male' => __('Male'), 'female' => __('Female')]"
+                        value="male" inline />
+
+                    <p class="text-body-secondary small mt-3 mb-0">
+                        {{ __('footer_subscribe_description') }}
+                    </p>
                 </x-form>
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-between text-center pt-4 mt-4 border-top">
-            <p>
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center text-center pt-4 mt-4 border-top gap-3">
+            <p class="mb-0">
                 &copy; {{ date('Y') }}
                 {{ __('All rights reserved for') }}
                 <a href="{{ url('/') }}">{{ app_name() }}</a>
             </p>
 
-            <ul class="list-unstyled d-flex justify-content-center">
+            <ul class="list-unstyled d-flex justify-content-center mb-0">
                 <li class="ms-3">
-                    <a class="text-muted" href="#">
-                        <i class="fab fa-facebook"></i>
+                    <a class="site-footer-social" href="#">
+                        <i class="fab fa-telegram"></i>
                     </a>
                 </li>
 
                 <li class="ms-3">
-                    <a class="text-muted" href="#">
-                        <i class="fab fa-twitter"></i>
+                    <a class="site-footer-social" href="#">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
                 </li>
 
                 <li class="ms-3">
-                    <a class="text-muted" href="#">
+                    <a class="site-footer-social" href="#">
                         <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+
+                <li class="ms-3">
+                    <a class="site-footer-social" href="#">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
                 </li>
             </ul>

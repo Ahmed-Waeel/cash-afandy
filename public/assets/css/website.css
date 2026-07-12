@@ -104,3 +104,36 @@ Navbar
 /* ============================================================
 Footer
 ============================================================ */
+.site-footer-subscribe .form-control {
+    background-color: var(--Light-Gray);
+    border: none;
+    border-radius: var(--tblr-border-radius-pill);
+}
+
+.site-footer-subscribe .form-control:focus {
+    background-color: var(--Light-Gray);
+    box-shadow: none;
+}
+
+.site-footer-subscribe .btn {
+    border-radius: var(--tblr-border-radius-pill);
+    margin-inline-start: 0.5rem;
+    width: 3rem;
+}
+
+.site-footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--Meduim-Gray);
+    color: var(--Black);
+}
+
+.site-footer-social:hover {
+    background-color: var(--Dark-Red);
+    border-color: var(--Dark-Red);
+    color: var(--White);
+}
