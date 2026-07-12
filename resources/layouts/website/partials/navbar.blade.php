@@ -1,75 +1,152 @@
 <x-form id="logout" :action="route('website.logout')" method="POST" class="d-none" disable-validation />
 
-<nav class="navbar navbar-expand-lg d-print-none">
-    <div class="container">
-        <a class="navbar-brand my-2" href="{{ route('website.index') }}">
-            <x-logo />
-        </a>
+@php
+    $localeFlags = ['en' => 'us', 'ar' => 'sa'];
+@endphp
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header class="site-navbar d-print-none">
+    <div class="site-navbar-top">
+        <div class="container d-flex align-items-center gap-3">
+            <a class="navbar-brand my-2" href="{{ route('website.index') }}">
+                <x-logo />
+            </a>
 
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="#" data-theme="dark" class="nav-link hide-theme-dark">
-                        <span class="nav-link-icon"><i class="fa fa-moon"></i></span>
-                        <span class="nav-link-title">{{ __('Dark mode') }}</span>
+            <form action="#" method="GET" class="site-navbar-search input-icon flex-fill d-none d-lg-flex">
+                <input type="search" class="form-control" placeholder="{{ __('Search') }}..." />
+                <span class="input-icon-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+            </form>
+
+            <div class="d-none d-lg-flex align-items-center gap-2 ms-auto">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <span class="flag flag-country-sa"></span>
+                        {{ __('Saudi Arabia') }}
                     </a>
 
-                    <a href="#" data-theme="light" class="nav-link hide-theme-light">
-                        <span class="nav-link-icon"><i class="fa fa-sun"></i></span>
-                        <span class="nav-link-title">{{ __('Light mode') }}</span>
-                    </a>
-                </li>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <span class="dropdown-item-text text-secondary small">{{ __('Coming soon') }}</span>
+                    </div>
+                </div>
 
                 @if (count(setting('website_locales')) > 1)
-                    <li class="nav-item dropdown">
+                    <div class="dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <span class="nav-link-icon"><i class="fa fa-language"></i></span>
-                            <span class="nav-link-title">{{ config('app.locales.' . app()->getLocale()) }}</span>
+                            @isset($localeFlags[app()->getLocale()])
+                                <span class="flag flag-country-{{ $localeFlags[app()->getLocale()] }}"></span>
+                            @endisset
+                            {{ config('app.locales.' . app()->getLocale()) }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end">
                             @foreach (setting('website_locales') as $locale)
                                 <a class="dropdown-item" href="{{ url()->current() }}?locale={{ $locale }}">
-                                    <span class="nav-link-title">{{ config('app.locales.' . $locale) }}</span>
+                                    @isset($localeFlags[$locale])
+                                        <span class="flag flag-country-{{ $localeFlags[$locale] }}"></span>
+                                    @endisset
+                                    {{ config('app.locales.' . $locale) }}
                                 </a>
                             @endforeach
                         </div>
-                    </li>
-                @endif
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <span class="nav-link-icon"><i class="fa fa-user"></i></span>
-                        <span class="nav-link-title">
-                            {{ auth('users')->check() ? current_user()->full_name : __('Account') }}
-                        </span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end">
-                        @auth('users')
-                            <a href="{{ route('website.profile.edit') }}" class="dropdown-item">
-                                <span class="dropdown-item-title">{{ __('Profile') }}</span>
-                            </a>
-
-                            <a href="#" class="dropdown-item" onclick="event.preventDefault(); $('#logout').submit()">
-                                <span class="dropdown-item-title">{{ __('Logout') }}</span>
-                            </a>
-                        @else
-                            <a href="{{ route('website.login') }}" class="dropdown-item">
-                                <span class="dropdown-item-title">{{ __('Login') }}</span>
-                            </a>
-
-                            <a href="{{ route('website.register') }}" class="dropdown-item">
-                                <span class="dropdown-item-title">{{ __('Register') }}</span>
-                            </a>
-                        @endauth
                     </div>
-                </li>
-            </ul>
+                @endif
+            </div>
+
+            <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#site-navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </div>
-</nav>
+
+    <nav class="site-navbar-bottom navbar navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-collapse collapse" id="site-navbar-collapse">
+                <form action="#" method="GET" class="site-navbar-search input-icon d-flex d-lg-none my-3">
+                    <input type="search" class="form-control" placeholder="{{ __('Search') }}..." />
+                    <span class="input-icon-addon">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </form>
+
+                <div
+                    class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center w-100 gap-2 gap-lg-3">
+                    <ul class="navbar-nav site-navbar-links">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('Coupons') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('Cashback') }}</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                {{ __('Categories') }}
+                            </a>
+
+                            <div class="dropdown-menu">
+                                <span class="dropdown-item-text text-secondary small">{{ __('Coming soon') }}</span>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('Articles') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('News') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('Offers') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('About Us') }}</a>
+                        </li>
+                    </ul>
+
+                    <div class="site-navbar-auth d-flex flex-column flex-lg-row gap-2 my-3 my-lg-0">
+                        @auth('users')
+                            <div class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+                                    data-bs-toggle="dropdown">
+                                    <span class="nav-link-icon"><i class="fa fa-user"></i></span>
+                                    {{ current_user()->full_name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="{{ route('website.profile.edit') }}" class="dropdown-item">
+                                        <span class="dropdown-item-title">{{ __('Profile') }}</span>
+                                    </a>
+
+                                    <a href="#" class="dropdown-item"
+                                        onclick="event.preventDefault(); $('#logout').submit()">
+                                        <span class="dropdown-item-title">{{ __('Logout') }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
+                                {{ __('Subscribe') }}
+                            </a>
+
+                            <a href="{{ route('website.login') }}" class="btn btn-brand">
+                                {{ __('Login') }}
+                            </a>
+                        @endauth
+
+                        <div class="d-flex d-lg-none align-items-center gap-3 mt-2">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <span class="flag flag-country-sa"></span>
+                                {{ __('Saudi Arabia') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

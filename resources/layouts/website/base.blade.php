@@ -3,6 +3,7 @@
 
     @pushOnce('styles')
         <link rel="stylesheet" href="{{ hashed_asset('vendor/swiper/swiper-bundle.min.css') }}" />
+        <link rel="stylesheet" href="{{ hashed_asset('vendor/tabler/css/tabler-flags.min.css') }}" />
         <link rel="stylesheet" href="{{ hashed_asset('assets/css/website.css') }}" />
 
         {!! setting('head_code') !!}
