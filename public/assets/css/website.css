@@ -1,3 +1,25 @@
+:root {
+    --Lightest-Red: #FF1A2FFF;
+    --Light-Red: #DF2334FF;
+    --Dark-Red: #CF1E30FF;
+    --Darkest-Red: #B71A2BFF;
+    --White: #FFFFFFFF;
+    --Lightest-Gray: #F6F6F6FF;
+    --Light-Gray: #F3F3F3FF;
+    --Meduim-Gray: #D0D0D0FF;
+    --Dark-Gray: #00000080;
+    --Black: #101010FF;
+    --Yellow: #FFBE4AFF;
+    --Transparent: #FFFFFF00;
+    --Disabled: #6C757D80;
+    --Links: #1A91EBFF;
+    --Light-Grayish-Blue: #D3DAE3FF;
+    --Light-Grayish-Blue-transparent: #D3DAE380;
+    --Blue: #0B99FFFF;
+    --Light-Green: #70E116FF;
+    --Light-Orange: #EDB015FF;
+}
+
 footer .nav .nav-item .nav-link:hover {
     background-color: unset;
     color: var(--tblr-primary);
