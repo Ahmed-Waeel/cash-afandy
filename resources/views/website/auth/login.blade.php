@@ -1,49 +1,76 @@
-<x-layouts::website.auth :title="__('Login to your account')">
-    <x-status />
+<x-layouts::website.auth-split :title="__('Login')">
+    @pushOnce('styles')
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet" />
 
-    <x-form class="card card-md" :action="route('website.login.store')" method="POST">
-        <div class="card-body">
-            <div class="text-center mb-4">
-                <h2 class="h2 mb-2">
-                    {{ __('Login to your account') }}
-                </h2>
+        <link rel="stylesheet" href="{{ hashed_asset('assets/css/login.css') }}" />
+    @endPushOnce
 
-                <p class="text-muted">
-                    {{ __('Forgot your password?') }}
-                    <a href="{{ route('website.password.request') }}">{{ __('Reset password') }}</a>
-                </p>
+    <x-status class="login-split__status mb-3" />
+
+    <div class="row g-0 align-items-center login-split">
+        <div class="col-12 col-lg-6 login-split__form-col">
+            <div class="login-split__form-wrap mx-auto">
+                <x-form :action="route('website.login.store')" method="POST">
+                    <h1 class="login-split__title mb-5">
+                        {{ __('Login') }}
+                    </h1>
+
+                    <div class="mb-4">
+                        <x-input type="email" name="email" :title="__('Email')" value="{{ old('email') }}"
+                            validation="required|email" />
+                    </div>
+
+                    <div class="mb-3">
+                        <x-input type="password" name="password" :title="__('Password')" validation="required" />
+                    </div>
+
+                    <div class="form-footer mb-3">
+                        <button type="submit" class="btn btn-login-primary w-100">
+                            {{ __('Continue') }}
+                        </button>
+                    </div>
+
+                    <p class="text-center mb-4">
+                        <a href="{{ route('website.password.request') }}" class="forgot-password-link">
+                            {{ __('Forgot Password?') }}
+                        </a>
+                    </p>
+
+                    <div class="hr-text mb-4">{{ __('OR') }}</div>
+
+                    <div class="d-flex flex-column gap-3 mb-4">
+                        <button type="button" class="btn btn-social btn-social-google" disabled aria-disabled="true">
+                            <x-social-icon social="google" size="sm" />
+                            {{ __('Sign in with Google') }}
+                        </button>
+
+                        <button type="button" class="btn btn-social btn-social-facebook" disabled aria-disabled="true">
+                            <x-social-icon social="facebook" size="sm" />
+                            {{ __('Sign in with Facebook') }}
+                        </button>
+                    </div>
+
+                    <p class="login-split__footer-text text-center mb-0">
+                        {{ __('Haven\'t started your savings journey yet?') }}
+                        <a href="{{ route('website.register') }}">{{ __('Start now') }}</a>
+                    </p>
+                </x-form>
             </div>
-
-            <div class="mb-3">
-                <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email') }}"
-                    placeholder="your@email.com" validation="required|email" />
-            </div>
-
-            <div class="mb-3">
-                <x-input type="password" name="password" :title="__('Password')" :placeholder="__('Password')" validation="required" />
-            </div>
-
-            <div class="mb-2">
-                <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="remember">
-                    <span class="form-check-label">{{ __('Remember me on this device') }}</span>
-                </label>
-            </div>
-
-            <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Sign in') }}</button>
-            </div>
-
-            <div class="hr-text">{{ __('or') }}</div>
-
-            <a href="{{ route('website.magic-link.create') }}" class="btn w-100">
-                {{ __('Login with Magic Link') }}
-            </a>
-
-            <p class="text-muted text-center mt-3">
-                {{ __('Don\'t have an account yet?') }}
-                <a href="{{ route('website.register') }}">{{ __('Sign up') }}</a>
-            </p>
         </div>
-    </x-form>
-</x-layouts::website.auth>
+
+        <div
+            class="col-12 col-lg-6 login-split__illustration d-none d-lg-flex flex-column align-items-center justify-content-center">
+            <img src="{{ hashed_asset('assets/images/login-illustration.svg') }}" alt=""
+                class="login-split__illustration-img" />
+
+            <div class="login-split__dots">
+                <span></span>
+                <span class="is-active"></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</x-layouts::website.auth-split>

@@ -1,0 +1,153 @@
+.login-split {
+    font-family: 'Plus Jakarta Sans', var(--tblr-font-sans-serif, sans-serif);
+}
+
+.login-page {
+    background-color: var(--White);
+}
+
+.login-split__illustration {
+    padding: 2rem;
+}
+
+.login-split__illustration-img {
+    max-width: 380px;
+    width: 100%;
+    height: auto;
+}
+
+.login-split__dots {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 0.4rem;
+    margin-block-start: 2rem;
+}
+
+.login-split__dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--Meduim-Gray);
+}
+
+.login-split__dots span.is-active {
+    width: 20px;
+    border-radius: 4px;
+    background-color: var(--Light-Red);
+}
+
+.login-split__form-col {
+    padding-block: 3rem;
+}
+
+.login-split__form-wrap {
+    max-width: 420px;
+    width: 100%;
+}
+
+.login-split__title {
+    font-weight: 800;
+    color: var(--Black);
+}
+
+.login-split .form-label {
+    color: var(--Black);
+    font-weight: 500;
+}
+
+.login-split .form-control {
+    background-color: var(--Light-Gray);
+    border: 1px solid var(--Transparent);
+    border-radius: 0.625rem;
+    padding-block: 0.9rem;
+}
+
+.login-split .form-control:focus {
+    background-color: var(--Light-Gray);
+    border-color: var(--Light-Red);
+    box-shadow: none;
+}
+
+.login-split .input-group-flat .input-group-text {
+    background-color: var(--Light-Gray);
+    border: 1px solid var(--Transparent);
+}
+
+.login-split .btn-login-primary {
+    background-color: var(--Light-Red);
+    border-color: var(--Light-Red);
+    color: var(--White);
+    font-weight: 600;
+    padding-block: 0.9rem;
+    border-radius: 0.625rem;
+}
+
+.login-split .btn-login-primary:hover,
+.login-split .btn-login-primary:focus {
+    background-color: var(--Dark-Red);
+    border-color: var(--Dark-Red);
+    color: var(--White);
+}
+
+.login-split .forgot-password-link {
+    color: var(--Black);
+    text-decoration: none;
+}
+
+.login-split .forgot-password-link:hover {
+    color: var(--Light-Red);
+}
+
+.login-split .btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 0.625rem;
+    padding-block: 0.9rem;
+    font-weight: 500;
+}
+
+.login-split .btn-social-google {
+    background-color: var(--White);
+    border: 1px solid var(--Meduim-Gray);
+    color: var(--Black);
+}
+
+.login-split .btn-social-google:hover {
+    background-color: var(--Lightest-Gray);
+    color: var(--Black);
+}
+
+.login-split .btn-social-facebook {
+    background-color: var(--Blue);
+    border-color: var(--Blue);
+    color: var(--White);
+}
+
+.login-split .btn-social-facebook:hover {
+    background-color: var(--Blue);
+    color: var(--White);
+    opacity: 0.9;
+}
+
+.login-split .btn-social[disabled],
+.login-split .btn-social[aria-disabled='true'] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.login-split__footer-text {
+    color: var(--Dark-Gray);
+}
+
+.login-split__footer-text a {
+    color: var(--Links);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-split__footer-text a:hover {
+    text-decoration: underline;
+}
