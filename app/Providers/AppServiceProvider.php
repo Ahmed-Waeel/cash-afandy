@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->overrideRedotConfig();
     }
 
     /**
@@ -26,6 +26,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureAuth();
+    }
+
+    /**
+     * Make config/cash-afandy.php values always take precedence over
+     * config/redot.php, since every part of the app reads via `redot.*`.
+     */
+    protected function overrideRedotConfig(): void
+    {
+        config(['redot' => array_replace_recursive(
+            config('redot', []),
+            config('cash-afandy', [])
+        )]);
     }
 
     /**
