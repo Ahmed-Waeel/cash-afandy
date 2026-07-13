@@ -47,6 +47,19 @@ Navbar
     color: var(--Dark-Red);
 }
 
+/* ============================================================
+Form Check (Radio)
+============================================================ */
+.form-check-input[type='radio']:checked {
+    background-color: var(--Dark-Red);
+    border-color: var(--Dark-Red);
+}
+
+.form-check-input[type='radio']:focus {
+    border-color: var(--Dark-Red);
+    box-shadow: 0 0 0 0.25rem rgba(207, 30, 48, 0.25);
+}
+
 .btn-outline-brand:hover,
 .btn-outline-brand:focus {
     background-color: var(--Dark-Red);
@@ -56,6 +69,10 @@ Navbar
 
 .site-navbar {
     background-color: var(--White);
+}
+
+.site-navbar .navbar-brand {
+    max-height: 2rem;
 }
 
 .site-navbar .flag {

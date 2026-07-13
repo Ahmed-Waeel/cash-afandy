@@ -6,7 +6,7 @@
 
 <header class="site-navbar d-print-none">
     <div class="site-navbar-top">
-        <div class="container d-flex align-items-center gap-3">
+        <div class="container justify-content-between d-flex align-items-center gap-3">
             <a class="navbar-brand my-2" href="{{ route('website.index') }}">
                 <x-logo />
             </a>
@@ -18,7 +18,7 @@
                 </span>
             </form>
 
-            <div class="d-none d-lg-flex align-items-center gap-2 ms-auto">
+            <div class="d-none d-lg-flex align-items-center gap-2">
                 <div class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <span class="flag flag-country-sa"></span>
