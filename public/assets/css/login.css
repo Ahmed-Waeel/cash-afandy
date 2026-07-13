@@ -109,6 +109,17 @@
     font-weight: 500;
 }
 
+.login-split .btn-social-magic-link {
+    background-color: var(--White);
+    border: 1px solid var(--Meduim-Gray);
+    color: var(--Black);
+}
+
+.login-split .btn-social-magic-link:hover {
+    background-color: var(--Lightest-Gray);
+    color: var(--Black);
+}
+
 .login-split .btn-social-google {
     background-color: var(--White);
     border: 1px solid var(--Meduim-Gray);

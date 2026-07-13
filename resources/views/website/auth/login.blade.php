@@ -42,6 +42,10 @@
                     <div class="hr-text mb-4">{{ __('OR') }}</div>
 
                     <div class="d-flex flex-column gap-3 mb-4">
+                        <a href="{{ route('website.magic-link.create') }}" class="btn btn-social btn-social-magic-link">
+                            {{ __('Login with Magic Link') }}
+                        </a>
+
                         <button type="button" class="btn btn-social btn-social-google" disabled aria-disabled="true">
                             <x-social-icon social="google" size="sm" />
                             {{ __('Sign in with Google') }}
