@@ -3,13 +3,15 @@
 
     <x-form class="card card-md" :action="route('website.magic-link.store')" method="POST">
         <div class="card-body">
-            <h2 class="card-title text-center mb-4">
-                {{ __('Login with Magic Link') }}
-            </h2>
+            <div class="text-center mb-4">
+                <h2 class="h2 mb-2">
+                    {{ __('Login with Magic Link') }}
+                </h2>
 
-            <p class="text-muted mb-4">
-                {{ __('Enter your email address and we will send you a login link.') }}
-            </p>
+                <p class="text-muted">
+                    {{ __('Enter your email address and we will send you a login link.') }}
+                </p>
+            </div>
 
             <div class="mb-3">
                 <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email') }}"
@@ -17,10 +19,10 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Send Magic Link') }}</button>
+                <button type="submit" class="btn btn-brand w-100">{{ __('Send Magic Link') }}</button>
             </div>
 
-            <p class="text-muted text-center mt-3">
+            <p class="text-muted text-center mt-3 mb-0">
                 <a href="{{ route('website.login') }}">{{ __('Back to login') }}</a>
             </p>
         </div>

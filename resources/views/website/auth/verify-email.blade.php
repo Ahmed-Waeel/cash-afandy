@@ -5,7 +5,8 @@
 
     <div class="card card-md">
         <div class="card-body text-center">
-            <h2 class="h1 mb-3">{{ __('Check your inbox') }}</h2>
+            <h2 class="h2 mb-2">{{ __('Check your inbox') }}</h2>
+
             <p class="text-muted">
                 {{ __('We have sent you an email with a link to verify your email address and complete your registration.') }}
             </p>

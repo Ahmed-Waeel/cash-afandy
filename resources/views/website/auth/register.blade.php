@@ -5,12 +5,8 @@
         <div class="card-body">
             <div class="text-center mb-4">
                 <h2 class="h2 mb-2">
-                    {{ __('Create new account') }}
+                    {{ __('Start your journey') }}
                 </h2>
-
-                <p class="text-muted">
-                    {{ __('It\'s free and only takes less than a minute') }}
-                </p>
             </div>
 
             <div class="row">
@@ -25,18 +21,61 @@
                 </div>
             </div>
 
-            <div class="mb-3">
-                <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email') }}"
-                    placeholder="your@email.com" validation="required|email" />
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email') }}"
+                        placeholder="your@email.com" validation="required|email" />
+                </div>
+
+                <div class="col-12 col-md-6 mb-3">
+                    <x-input type="tel" name="phone" :title="__('Phone Number')" value="{{ old('phone') }}"
+                        :placeholder="__('Phone Number')" />
+                </div>
             </div>
 
-            <div class="mb-3">
-                <x-input type="password" name="password" :title="__('Password')" :placeholder="__('Password')" validation="required" />
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <x-input type="password" name="password" :title="__('Password')" :placeholder="__('Password')" validation="required" />
+                </div>
+
+                <div class="col-12 col-md-6 mb-3">
+                    <x-input type="password" name="password_confirmation" :title="__('Confirm Password')" :placeholder="__('Confirm Password')"
+                        validation="required" />
+                </div>
             </div>
 
-            <div class="mb-3">
-                <x-input type="password" name="password_confirmation" :title="__('Confirm Password')" :placeholder="__('Confirm Password')"
-                    validation="required" />
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <x-label :title="__('Birthdate')" for="birthdate" />
+
+                    <div class="input-icon">
+                        <input type="date" id="birthdate" name="birthdate" value="{{ old('birthdate') }}"
+                            class="form-control" />
+                        <span class="input-icon-addon">
+                            <i class="fas fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3">
+                    <x-radios name="gender" :title="__('Gender')" :options="['male' => __('Male'), 'female' => __('Female')]"
+                        value="male" inline />
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 mb-3">
+                    <span class="form-label mb-0">{{ __('Do you have a code?') }}</span>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3">
+                    <x-toggle id="has-referral-code" :on="__('Yes, I have an invite code')" :off="__('No, I don\'t have an invite code')" />
+                </div>
+            </div>
+
+            <div class="mb-3 d-none" id="referral-code-field">
+                <x-input type="text" name="referral_code" :title="__('Invite Code')" value="{{ old('referral_code') }}"
+                    :placeholder="__('Invite Code')" />
             </div>
 
             @if (setting('cloudflare_turnstile_site_key'))
@@ -44,13 +83,43 @@
             @endif
 
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Sign up') }}</button>
+                <button type="submit" class="btn btn-brand w-100">{{ __('Continue') }}</button>
             </div>
 
-            <p class="text-muted text-center mt-3">
-                {{ __('Already have an account?') }}
-                <a href="{{ route('website.login') }}">{{ __('Login') }}</a>
+            <div class="hr-text my-3">{{ __('OR') }}</div>
+
+            <div class="d-flex flex-column gap-3 mb-4">
+                <button type="button" class="btn btn-social btn-social-google" disabled aria-disabled="true">
+                    <x-social-icon social="google" size="sm" />
+                    {{ __('Sign in with Google') }}
+                </button>
+
+                <button type="button" class="btn btn-social btn-social-facebook" disabled aria-disabled="true">
+                    <x-social-icon social="facebook" size="sm" />
+                    {{ __('Sign in with Facebook') }}
+                </button>
+            </div>
+
+            <p class="text-muted text-center mb-0">
+                {{ __('Already started your savings journey?') }}
+                <a href="{{ route('website.login') }}">{{ __('Login now') }}</a>
             </p>
         </div>
     </x-form>
+
+    @pushOnce('scripts')
+        <script>
+            $(function() {
+                const $toggle = $('#has-referral-code');
+                const $field = $('#referral-code-field');
+
+                function syncReferralCodeField() {
+                    $field.toggleClass('d-none', ! $toggle.is(':checked'));
+                }
+
+                $toggle.on('change', syncReferralCodeField);
+                syncReferralCodeField();
+            });
+        </script>
+    @endPushOnce
 </x-layouts::website.auth>

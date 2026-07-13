@@ -3,11 +3,13 @@
 
     <x-form class="card card-md" :action="route('website.password.email')" method="POST">
         <div class="card-body">
-            <h2 class="card-title text-center mb-4">{{ __('Forgot password') }}</h2>
+            <div class="text-center mb-4">
+                <h2 class="h2 mb-2">{{ __('Forgot password') }}</h2>
 
-            <p class="text-muted mb-4">
-                {{ __('Enter your email address and your reset password link will be emailed to you.') }}
-            </p>
+                <p class="text-muted">
+                    {{ __('Enter your email address and your reset password link will be emailed to you.') }}
+                </p>
+            </div>
 
             <div class="mb-3">
                 <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email') }}"
@@ -15,8 +17,12 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Send password reset link') }}</button>
+                <button type="submit" class="btn btn-brand w-100">{{ __('Send password reset link') }}</button>
             </div>
+
+            <p class="text-muted text-center mt-3 mb-0">
+                <a href="{{ route('website.login') }}">{{ __('Back to login') }}</a>
+            </p>
         </div>
     </x-form>
 </x-layouts::website.auth>

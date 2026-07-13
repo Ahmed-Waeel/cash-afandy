@@ -3,13 +3,15 @@
 
     <x-form class="card card-md" :action="route('website.magic-link-code.store')" method="POST">
         <div class="card-body">
-            <h2 class="card-title text-center mb-4">
-                {{ __('Enter Code') }}
-            </h2>
+            <div class="text-center mb-4">
+                <h2 class="h2 mb-2">
+                    {{ __('Enter Code') }}
+                </h2>
 
-            <p class="text-muted mb-4">
-                {{ __('We sent a code to :email. Enter it below or click the link in the email.', ['email' => $email]) }}
-            </p>
+                <p class="text-muted">
+                    {{ __('We sent a code to :email. Enter it below or click the link in the email.', ['email' => $email]) }}
+                </p>
+            </div>
 
             <input type="hidden" name="email" value="{{ $email }}">
 
@@ -19,10 +21,10 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Verify Code') }}</button>
+                <button type="submit" class="btn btn-brand w-100">{{ __('Verify Code') }}</button>
             </div>
 
-            <p class="text-muted text-center mt-3">
+            <p class="text-muted text-center mt-3 mb-0">
                 <a href="{{ route('website.magic-link.create') }}">{{ __('Didn\'t receive the email? Try again') }}</a>
             </p>
         </div>

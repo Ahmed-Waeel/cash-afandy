@@ -5,13 +5,15 @@
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
         <div class="card-body">
-            <h2 class="card-title text-center mb-4">
-                {{ __('Reset password') }}
-            </h2>
+            <div class="text-center mb-4">
+                <h2 class="h2 mb-2">
+                    {{ __('Reset password') }}
+                </h2>
 
-            <p class="text-muted mb-4">
-                {{ __('Make sure to use a strong password to keep your account secure.') }}
-            </p>
+                <p class="text-muted">
+                    {{ __('Make sure to use a strong password to keep your account secure.') }}
+                </p>
+            </div>
 
             <div class="mb-3">
                 <x-input type="email" name="email" :title="__('Email address')" value="{{ old('email', $request->email) }}"
@@ -29,7 +31,7 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">{{ __('Reset password') }}</button>
+                <button type="submit" class="btn btn-brand w-100">{{ __('Reset password') }}</button>
             </div>
         </div>
     </x-form>
