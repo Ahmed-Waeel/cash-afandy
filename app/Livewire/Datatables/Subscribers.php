@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Datatables;
 
+use App\Enums\Gender;
 use App\Models\Subscriber;
 use Illuminate\Database\Eloquent\Builder;
 use Redot\Datatables\Actions\Action;
@@ -34,11 +35,11 @@ class Subscribers extends Datatable
                 ->searchable(),
 
             TextColumn::make('gender', __('Gender'))
-                ->getter(fn ($subscriber) => __(ucfirst($subscriber->gender)))
+                ->getter(fn ($value) => $value->label())
                 ->sortable(),
 
             TextColumn::make('created_at', __('Subscribed At'))
-                ->getter(fn ($subscriber) => $subscriber->created_at->format('Y-m-d H:i'))
+                ->getter(fn ($value) => $value->format('Y-m-d H:i'))
                 ->sortable(),
         ];
     }
@@ -60,7 +61,7 @@ class Subscribers extends Datatable
     {
         return [
             SelectFilter::make('gender', __('Gender'))
-                ->options(['male' => __('Male'), 'female' => __('Female')]),
+                ->options(Gender::values()),
         ];
     }
 }

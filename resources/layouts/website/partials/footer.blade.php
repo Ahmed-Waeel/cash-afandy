@@ -57,8 +57,8 @@
                         </button>
                     </div>
 
-                    <x-radios name="gender" :options="['male' => __('Male'), 'female' => __('Female')]"
-                        value="male" inline />
+                    <x-radios name="gender" :options="\App\Enums\Gender::values()"
+                        :value="\App\Enums\Gender::Male->value" inline />
 
                     <p class="text-body-secondary small mt-3 mb-0">
                         {{ __('footer_subscribe_description') }}

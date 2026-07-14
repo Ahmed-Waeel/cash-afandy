@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enums\Gender;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Enum;
 use Redot\Http\Controllers\Controller;
 
 class StoreSubscriberController extends Controller
@@ -15,7 +17,7 @@ class StoreSubscriberController extends Controller
     {
         $validated = $request->validate([
             'email' => 'required|email|max:255',
-            'gender' => 'required|string|in:male,female',
+            'gender' => ['required', new Enum(Gender::class)],
         ]);
 
         $subscriber = Subscriber::updateOrCreate(
