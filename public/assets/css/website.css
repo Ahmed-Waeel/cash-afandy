@@ -182,7 +182,7 @@ Footer
     transition: all 0.5s ease-in-out;
 }
 
-.site-footer-social:hover {
+.site-footer-social-item:hover .site-footer-social {
     color: inherit;
     text-decoration: none;
     transform: translate3d(0, 0, 15px) perspective(180px) rotateX(-85deg) translateY(2px);
