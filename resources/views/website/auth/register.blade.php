@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 d-none" id="referral-code-field">
+            <div class="mb-3" visible-when="$has-referral-code">
                 <x-input type="text" name="referral_code" :title="__('Invite Code')" value="{{ old('referral_code') }}"
                     :placeholder="__('Invite Code')" />
             </div>
@@ -106,20 +106,4 @@
             </p>
         </div>
     </x-form>
-
-    @pushOnce('scripts')
-        <script>
-            $(function() {
-                const $toggle = $('#has-referral-code');
-                const $field = $('#referral-code-field');
-
-                function syncReferralCodeField() {
-                    $field.toggleClass('d-none', ! $toggle.is(':checked'));
-                }
-
-                $toggle.on('change', syncReferralCodeField);
-                syncReferralCodeField();
-            });
-        </script>
-    @endPushOnce
 </x-layouts::website.auth>
