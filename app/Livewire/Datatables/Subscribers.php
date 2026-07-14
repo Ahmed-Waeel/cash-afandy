@@ -26,7 +26,6 @@ class Subscribers extends Datatable
     {
         return [
             TextColumn::make('user.full_name', __('Name'))
-                ->format(fn (Subscriber $subscriber) => $subscriber->user?->name)
                 ->sortable()
                 ->searchable(),
 
@@ -35,11 +34,11 @@ class Subscribers extends Datatable
                 ->searchable(),
 
             TextColumn::make('gender', __('Gender'))
-                ->format(fn (Subscriber $subscriber) => __(ucfirst($subscriber->gender)))
+                ->getter(fn ($subscriber) => __(ucfirst($subscriber->gender)))
                 ->sortable(),
 
             TextColumn::make('created_at', __('Subscribed At'))
-                ->format(fn (Subscriber $subscriber) => $subscriber->created_at->format('Y-m-d H:i'))
+                ->getter(fn ($subscriber) => $subscriber->created_at->format('Y-m-d H:i'))
                 ->sortable(),
         ];
     }
