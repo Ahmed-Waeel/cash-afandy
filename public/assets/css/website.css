@@ -122,9 +122,10 @@ Form Check (Radio)
 Footer
 ============================================================ */
 .site-footer-subscribe .form-control {
+    height: 100%;
     background-color: var(--Light-Gray);
     border: none;
-    border-radius: var(--tblr-border-radius-pill);
+    border-radius: 0;
 }
 
 .site-footer-subscribe .form-control:focus {
@@ -134,7 +135,9 @@ Footer
 
 .site-footer-subscribe .btn {
     border-radius: var(--tblr-border-radius-pill);
-    margin-inline-start: 0.5rem;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    margin-inline-start: 0;
     width: 3rem;
 }
 
