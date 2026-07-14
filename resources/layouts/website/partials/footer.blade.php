@@ -5,7 +5,7 @@
                 <h5>{{ __('About :app', ['app' => app_name()]) }}</h5>
 
                 <p class="text-body-secondary">
-                    {{ __('footer_about_description') }}
+                    {{ setting('footer_about_description') }}
                 </p>
             </div>
 
@@ -61,7 +61,7 @@
                         :value="\App\Enums\Gender::Male->value" inline />
 
                     <p class="text-body-secondary small mt-3 mb-0">
-                        {{ __('footer_subscribe_description') }}
+                        {{ setting('footer_subscribe_description') }}
                     </p>
                 </x-form>
             </div>

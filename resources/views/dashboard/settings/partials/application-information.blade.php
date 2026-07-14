@@ -27,6 +27,16 @@
         validation="required" />
 </div>
 
+<div class="mb-3">
+    <x-translatable component="textarea" name="footer_about_description" :title="__('Footer about description')"
+        :value="setting('footer_about_description')" />
+</div>
+
+<div class="mb-3">
+    <x-translatable component="textarea" name="footer_subscribe_description" :title="__('Footer subscribe description')"
+        :value="setting('footer_subscribe_description')" />
+</div>
+
 @if (config('redot.features.website.enabled'))
     <div class="mb-3">
         <x-checkboxes :title="__('Website Languages')" :options="config('app.locales')" :inline="true" name="website_locales[]" :value="setting('website_locales', [])"
@@ -34,6 +44,12 @@
     </div>
 
     <div class="mb-3">
+        <x-toggle name="show_website_countries_dropdown" :title="__('Show Website Countries Dropdown')"
+            :value="setting('show_website_countries_dropdown')"
+            :hint="__('When disabled, the country dropdown is hidden and content is shown for all countries by default.')" />
+    </div>
+
+    <div class="mb-3" visible-when="$show_website_countries_dropdown">
         <x-select name="website_countries[]" :title="__('Website Countries')" :query="\App\Models\Country::class" key="code"
             text="name" :value="setting('website_countries', [])" multiple validation="required|min:1" />
     </div>
@@ -41,12 +57,6 @@
     <div class="mb-3">
         <x-select name="default_website_country" :title="__('Default Website Country')" :query="\App\Models\Country::class" key="code"
             text="name" :value="setting('default_website_country')" validation="required" />
-    </div>
-
-    <div class="mb-3">
-        <x-toggle name="show_website_countries_dropdown" :title="__('Show Website Countries Dropdown')"
-            :value="setting('show_website_countries_dropdown')"
-            :hint="__('When disabled, the country dropdown is hidden and content is shown for all countries by default.')" />
     </div>
 @endif
 
