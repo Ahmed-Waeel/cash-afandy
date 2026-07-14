@@ -1,5 +1,5 @@
 <section class="mb-5">
-    <div id="hero-slider" class="swiper">
+    <div id="hero-slider" class="swiper site-hero-slider">
         <div class="swiper-wrapper">
             @foreach ($sliders as $slider)
                 <div class="swiper-slide">

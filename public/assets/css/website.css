@@ -57,6 +57,29 @@ Navbar
 }
 
 /* ============================================================
+Hero Slider
+============================================================ */
+.site-hero-slider .swiper-slide {
+    height: 26rem;
+}
+
+.site-hero-slider .swiper-slide>div {
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .site-hero-slider .swiper-slide {
+        height: 32rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .site-hero-slider .swiper-slide {
+        height: 38rem;
+    }
+}
+
+/* ============================================================
 Form Check (Radio)
 ============================================================ */
 .form-check-input[type='radio']:checked {
