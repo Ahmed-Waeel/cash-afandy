@@ -44,12 +44,12 @@
     </div>
 
     <div class="mb-3">
-        <x-toggle name="show_website_countries_dropdown" :title="__('Show Website Countries Dropdown')"
+        <x-toggle name="show_website_countries_dropdown" id="show-website-countries-dropdown" :title="__('Show Website Countries Dropdown')"
             :value="setting('show_website_countries_dropdown')"
             :hint="__('When disabled, the country dropdown is hidden and content is shown for all countries by default.')" />
     </div>
 
-    <div class="mb-3" visible-when="$show_website_countries_dropdown">
+    <div class="mb-3" visible-when="$show-website-countries-dropdown">
         <x-select name="website_countries[]" :title="__('Website Countries')" :query="\App\Models\Country::class" key="code"
             text="name" :value="setting('website_countries', [])" multiple validation="required|min:1" />
     </div>
