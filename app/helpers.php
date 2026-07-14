@@ -53,11 +53,18 @@ function is_dashboard_request(): bool
  * Resolution order: an explicit `?country=` query param, the previously
  * selected country in the session, then the visitor's IP-detected country -
  * restricted to the countries the website currently supports.
+ *
+ * Returns null when the countries dropdown is disabled in settings, meaning
+ * content should not be filtered by country (all countries by default).
  */
-function website_country(): Country
+function website_country(): ?Country
 {
-    $codes = setting('website_countries');
     $default = setting('default_website_country');
+    if (! setting('show_website_countries_dropdown')) {
+        return Country::code($default);
+    }
+
+    $codes = setting('website_countries');
 
     $code = request()->query('country');
 

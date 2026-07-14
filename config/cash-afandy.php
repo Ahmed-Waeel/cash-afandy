@@ -109,6 +109,9 @@ return [
             'default' => 'eg',
             'rules' => ['required', 'string'],
         ],
+        'show_website_countries_dropdown' => [
+            'default' => true,
+        ],
         'dashboard_locales' => [
             'default' => ['en', 'ar'],
             'rules' => ['required', 'array', 'min:1'],

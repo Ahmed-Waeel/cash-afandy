@@ -42,6 +42,12 @@
         <x-select name="default_website_country" :title="__('Default Website Country')" :query="\App\Models\Country::class" key="code"
             text="name" :value="setting('default_website_country')" validation="required" />
     </div>
+
+    <div class="mb-3">
+        <x-toggle name="show_website_countries_dropdown" :title="__('Show Website Countries Dropdown')"
+            :value="setting('show_website_countries_dropdown')"
+            :hint="__('When disabled, the country dropdown is hidden and content is shown for all countries by default.')" />
+    </div>
 @endif
 
 <div class="mb-3">
