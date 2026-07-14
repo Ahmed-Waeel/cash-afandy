@@ -18,9 +18,9 @@
                     </div>
                 </div>
 
-                <h4 class="mb-2">Sign up on {{ app_name() }}</h4>
+                <h4 class="mb-2">{{ __('Sign up on :app_name', ['app_name' => app_name()]) }}</h4>
                 <p class="text-body-secondary small mb-0">
-                    Easily create a new account on {{ app_name() }} or log in if you already have an account
+                    {{ __('Easily create a new account on :app_name or log in if you already have an account', ['app_name' => app_name()]) }}
                 </p>
             </div>
 
@@ -35,10 +35,9 @@
                     </div>
                 </div>
 
-                <h4 class="mb-2">Browse the cashback section</h4>
+                <h4 class="mb-2">{{ __('Browse the cashback section') }}</h4>
                 <p class="text-body-secondary small mb-0">
-                    You will find many featured stores on {{ app_name() }}, all you have to do is choose one of
-                    them
+                    {{ __('You will find many featured stores on :app_name, all you have to do is choose one of them', ['app_name' => app_name()]) }}
                 </p>
             </div>
 
@@ -52,9 +51,9 @@
                     </div>
                 </div>
 
-                <h4 class="mb-2">Complete the purchase</h4>
+                <h4 class="mb-2">{{ __('Complete the purchase') }}</h4>
                 <p class="text-body-secondary small mb-0">
-                    Go to the store and complete the purchase process as usual without any additional steps
+                    {{ __('Go to the store and complete the purchase process as usual without any additional steps') }}
                 </p>
             </div>
 
@@ -69,10 +68,9 @@
                     </div>
                 </div>
 
-                <h4 class="mb-2">Wait for the cashback in your account</h4>
+                <h4 class="mb-2">{{ __('Wait for the cashback in your account') }}</h4>
                 <p class="text-body-secondary small mb-0">
-                    Wait for the cashback amount to appear in your account on {{ app_name() }}, then you can
-                    withdraw it later
+                    {{ __('Wait for the cashback amount to appear in your account on :app_name, then you can withdraw it later', ['app_name' => app_name()]) }}
                 </p>
             </div>
         </div>
