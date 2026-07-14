@@ -1,7 +1,9 @@
 <x-form id="logout" :action="route('website.logout')" method="POST" class="d-none" disable-validation />
 
 @php
-    $localeFlags = ['en' => 'us', 'ar' => 'sa'];
+    $localeFlags = ['en' => 'us', 'ar' => 'eg'];
+    $currentCountry = website_country();
+    $availableCountries = \App\Models\Country::whereIn('code', setting('website_countries'))->get();
 @endphp
 
 <header class="site-navbar d-print-none">
@@ -21,12 +23,17 @@
             <div class="d-none d-lg-flex align-items-center gap-2">
                 <div class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <span class="flag flag-country-sa"></span>
-                        {{ __('Saudi Arabia') }}
+                        <span class="flag flag-country-{{ $currentCountry->code }}"></span>
+                        {{ app()->getLocale() === 'ar' ? $currentCountry->native : $currentCountry->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end">
-                        <span class="dropdown-item-text text-secondary small">{{ __('Coming soon') }}</span>
+                        @foreach ($availableCountries as $country)
+                            <a class="dropdown-item" href="{{ url()->current() }}?country={{ $country->code }}">
+                                <span class="flag flag-country-{{ $country->code }}"></span>
+                                {{ app()->getLocale() === 'ar' ? $country->native : $country->name }}
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
@@ -138,11 +145,20 @@
                             </a>
                         @endauth
 
-                        <div class="d-flex d-lg-none align-items-center gap-3 mt-2">
+                        <div class="dropdown d-flex d-lg-none align-items-center gap-3 mt-2">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <span class="flag flag-country-sa"></span>
-                                {{ __('Saudi Arabia') }}
+                                <span class="flag flag-country-{{ $currentCountry->code }}"></span>
+                                {{ app()->getLocale() === 'ar' ? $currentCountry->native : $currentCountry->name }}
                             </a>
+
+                            <div class="dropdown-menu">
+                                @foreach ($availableCountries as $country)
+                                    <a class="dropdown-item" href="{{ url()->current() }}?country={{ $country->code }}">
+                                        <span class="flag flag-country-{{ $country->code }}"></span>
+                                        {{ app()->getLocale() === 'ar' ? $country->native : $country->name }}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

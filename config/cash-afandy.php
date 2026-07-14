@@ -101,6 +101,10 @@ return [
             'default' => ['en', 'ar'],
             'rules' => ['required', 'array', 'min:1'],
         ],
+        'website_countries' => [
+            'default' => ['eg', 'sa'],
+            'rules' => ['required', 'array', 'min:1'],
+        ],
         'dashboard_locales' => [
             'default' => ['en', 'ar'],
             'rules' => ['required', 'array', 'min:1'],

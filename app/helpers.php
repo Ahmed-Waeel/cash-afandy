@@ -1,7 +1,10 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Country;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
+use Stevebauman\Location\Facades\Location;
 
 /**
  * Get a static page url by the given slug.
@@ -42,4 +45,45 @@ function is_dashboard_request(): bool
     $root = route('dashboard.index');
 
     return url()->current() === $root || str_starts_with(url()->current(), "{$root}/");
+}
+
+/**
+ * Get the website's currently selected country.
+ *
+ * Resolution order: an explicit `?country=` query param, the previously
+ * selected country in the session, then the visitor's IP-detected country -
+ * restricted to the countries the website currently supports.
+ */
+function website_country(): Country
+{
+    $codes = setting('website_countries');
+    $default = $codes[0] ?? 'eg';
+
+    $code = request()->query('country');
+
+    if ($code && in_array($code, $codes, true)) {
+        session()->put('website_country', $code);
+    } else {
+        $code = session('website_country');
+    }
+
+    if (! in_array($code, $codes, true)) {
+        $code = Cache::remember(
+            'website-country-ip:' . request()->ip(),
+            now()->addDay(),
+            function () {
+                $position = Location::get();
+
+                return $position ? strtolower((string) $position->countryCode) : '';
+            }
+        );
+
+        if (! in_array($code, $codes, true)) {
+            $code = $default;
+        }
+
+        session()->put('website_country', $code);
+    }
+
+    return Country::code($code) ?? Country::code($default);
 }

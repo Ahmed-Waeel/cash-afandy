@@ -32,6 +32,11 @@
         <x-checkboxes :title="__('Website Languages')" :options="config('app.locales')" :inline="true" name="website_locales[]" :value="setting('website_locales', [])"
             validation="required|min:1" />
     </div>
+
+    <div class="mb-3">
+        <x-select name="website_countries[]" :title="__('Website Countries')" :query="\App\Models\Country::class" key="code"
+            text="name" :value="setting('website_countries', [])" multiple validation="required|min:1" />
+    </div>
 @endif
 
 <div class="mb-3">
