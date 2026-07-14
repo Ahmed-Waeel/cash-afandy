@@ -43,10 +43,6 @@
                             </a>
                         </li>
                     @endforeach
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0 text-body-secondary">{{ __('Be a Partner') }}</a>
-                    </li>
                 </ul>
             </div>
 
