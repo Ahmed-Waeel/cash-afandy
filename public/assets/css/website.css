@@ -150,19 +150,40 @@ Footer
     width: 3rem;
 }
 
-.site-footer-social {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.site-footer-social-item {
     width: 2.25rem;
     height: 2.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline-start: 0.75rem;
     border-radius: 50%;
-    border: 1px solid var(--Meduim-Gray);
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+}
+
+.site-footer-social-item:hover {
+    background-color: var(--White);
+    transform: perspective(180px) rotateX(60deg) translateY(2px);
+    box-shadow: 0px 6px 10px -3px var(--Lightest-Red);
+}
+
+.site-footer-social {
+    width: inherit;
+    height: inherit;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
     color: var(--Black);
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
 }
 
 .site-footer-social:hover {
-    background-color: var(--Dark-Red);
-    border-color: var(--Dark-Red);
-    color: var(--White);
+    color: inherit;
+    text-decoration: none;
+    transform: translate3d(0, 0, 15px) perspective(180px) rotateX(-85deg) translateY(2px);
 }

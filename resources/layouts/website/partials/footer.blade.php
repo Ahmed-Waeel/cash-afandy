@@ -74,26 +74,26 @@
                 <a href="{{ url('/') }}">{{ app_name() }}</a>
             </p>
 
-            <ul class="list-unstyled d-flex justify-content-center mb-0">
-                <li class="ms-3">
+            <ul class="site-footer-social-list list-unstyled d-flex justify-content-center mb-0">
+                <li class="site-footer-social-item">
                     <a class="site-footer-social" href="#">
                         <i class="fab fa-telegram"></i>
                     </a>
                 </li>
 
-                <li class="ms-3">
+                <li class="site-footer-social-item">
                     <a class="site-footer-social" href="#">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </li>
 
-                <li class="ms-3">
+                <li class="site-footer-social-item">
                     <a class="site-footer-social" href="#">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </li>
 
-                <li class="ms-3">
+                <li class="site-footer-social-item">
                     <a class="site-footer-social" href="#">
                         <i class="fab fa-facebook-f"></i>
                     </a>
