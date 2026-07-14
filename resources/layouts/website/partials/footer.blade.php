@@ -2,15 +2,15 @@
     <footer class="container py-5">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <h5>{{ __('About :app', ['app' => app_name()]) }}</h5>
+                <h3>{{ __('About :app', ['app' => app_name()]) }}</h2>
 
                 <p class="text-body-secondary">
-                    {{ setting('footer_about_description') }}
+                    {{  Arr::get(setting('footer_about_description'), app()->getLocale()) }}
                 </p>
             </div>
 
             <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-                <h5>{{ __('Our Services') }}</h5>
+                <h3>{{ __('Our Services') }}</h2>
 
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-                <h5>{{ __('Important Links') }}</h5>
+                <h3>{{ __('Important Links') }}</h2>
 
                 <ul class="nav flex-column">
                     @foreach (\App\Models\StaticPage::select('title', 'slug')->get() as $page)
@@ -48,7 +48,7 @@
 
             <div class="col-12 col-lg-4">
                 <x-form route="website.subscribers.store" method="POST" toast-errors>
-                    <h5>{{ __('Subscribe Now') }}</h5>
+                    <h3>{{ __('Subscribe Now') }}</h2>
 
                     <div class="site-footer-subscribe input-group mb-3">
                         <x-input type="email" name="email" :placeholder="__('Email Address')" validation="required" />
@@ -61,7 +61,7 @@
                         :value="\App\Enums\Gender::Male->value" inline />
 
                     <p class="text-body-secondary small mt-3 mb-0">
-                        {{ setting('footer_subscribe_description') }}
+                        {{ Arr::get(setting('footer_subscribe_description'), app()->getLocale()) }}
                     </p>
                 </x-form>
             </div>
