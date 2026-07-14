@@ -30,6 +30,10 @@ class SettingController extends Controller
                 'title' => __('Integrations'),
                 'icon' => 'fa fa-plug',
             ],
+            'social-media' => [
+                'title' => __('Social Media'),
+                'icon' => 'fa fa-share-alt',
+            ],
             'custom-code' => [
                 'title' => __('Code'),
                 'icon' => 'fa fa-code',

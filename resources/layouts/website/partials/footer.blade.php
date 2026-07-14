@@ -74,30 +74,27 @@
                 <a href="{{ url('/') }}">{{ app_name() }}</a>
             </p>
 
+            @php
+                $socialLinks = [
+                    'social_facebook' => 'fa-facebook-f',
+                    'social_instagram' => 'fa-instagram',
+                    'social_whatsapp' => 'fa-whatsapp',
+                    'social_x' => 'fa-x-twitter',
+                    'social_telegram' => 'fa-telegram',
+                    'social_tiktok' => 'fa-tiktok',
+                ];
+            @endphp
+
             <ul class="site-footer-social-list list-unstyled d-flex justify-content-center mb-0">
-                <li class="site-footer-social-item">
-                    <a class="site-footer-social" href="#">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                </li>
+                @foreach ($socialLinks as $key => $icon)
+                    @continue(! setting($key))
 
-                <li class="site-footer-social-item">
-                    <a class="site-footer-social" href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </li>
-
-                <li class="site-footer-social-item">
-                    <a class="site-footer-social" href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-
-                <li class="site-footer-social-item">
-                    <a class="site-footer-social" href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
+                    <li class="site-footer-social-item">
+                        <a class="site-footer-social" href="{{ setting($key) }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fab {{ $icon }}"></i>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </footer>

@@ -151,5 +151,23 @@ return [
                 'radius' => 1,
             ],
         ],
+        'social_facebook' => [
+            'default' => '',
+        ],
+        'social_instagram' => [
+            'default' => '',
+        ],
+        'social_whatsapp' => [
+            'default' => '',
+        ],
+        'social_x' => [
+            'default' => '',
+        ],
+        'social_telegram' => [
+            'default' => '',
+        ],
+        'social_tiktok' => [
+            'default' => '',
+        ],
     ],
 ];
