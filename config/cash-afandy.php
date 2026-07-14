@@ -105,6 +105,10 @@ return [
             'default' => ['eg', 'sa'],
             'rules' => ['required', 'array', 'min:1'],
         ],
+        'default_website_country' => [
+            'default' => 'eg',
+            'rules' => ['required', 'string'],
+        ],
         'dashboard_locales' => [
             'default' => ['en', 'ar'],
             'rules' => ['required', 'array', 'min:1'],

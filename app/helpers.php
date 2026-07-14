@@ -57,7 +57,7 @@ function is_dashboard_request(): bool
 function website_country(): Country
 {
     $codes = setting('website_countries');
-    $default = $codes[0] ?? 'eg';
+    $default = setting('default_website_country');
 
     $code = request()->query('country');
 
