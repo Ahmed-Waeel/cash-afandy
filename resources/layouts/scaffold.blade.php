@@ -111,8 +111,13 @@
                     $form = $('body');
                 }
 
-                appendErrorsToForm($form, window.ErrorsBag);
-                scrollToFirstError($form);
+                if ($form.hasAttr('toast-errors')) {
+                    Object.values(window.ErrorsBag).forEach((messages) => toastify().error(messages[0]));
+                    markInvalidInputs($form, window.ErrorsBag);
+                } else {
+                    appendErrorsToForm($form, window.ErrorsBag);
+                    scrollToFirstError($form);
+                }
             });
         </script>
     @endif

@@ -5,6 +5,7 @@ use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ProfileController;
 use App\Http\Controllers\Website\ShortenedUrlController;
 use App\Http\Controllers\Website\StaticPageController;
+use App\Http\Controllers\Website\StoreSubscriberController;
 use Illuminate\Support\Facades\Route;
 use Redot\Auth\Facades\RedotAuth;
 
@@ -21,6 +22,7 @@ Route::get('/', HomeController::class)->name('index');
 Route::get('up', HealthCheckController::class)->name('health-check');
 Route::get('r/{shortenedUrl?}', [ShortenedUrlController::class, 'show'])->name('shortened-urls.show');
 Route::get('static-pages/{staticPage}', [StaticPageController::class, 'show'])->name('static-pages.show');
+Route::post('subscribers', StoreSubscriberController::class)->name('subscribers.store');
 
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -26,6 +26,7 @@ use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\ShortenedUrlController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\StaticPageController;
+use App\Http\Controllers\Dashboard\SubscriberController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\UserImpersonateController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,8 @@ Route::middleware('auth:admins')->group(function () {
     if (config('redot.features.website.enabled')) {
         Route::resource('static-pages', StaticPageController::class)->except(['show']);
     }
+
+    Route::resource('subscribers', SubscriberController::class)->only(['index', 'destroy']);
 
     /* --------- Cash Afandy --------- */
     Route::resource('categories', CategoryController::class)->except(['show']);

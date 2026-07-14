@@ -262,8 +262,13 @@ function validateForm($form, verbose = false) {
 
     // Append the errors to the form if verbose mode is enabled
     if (verbose) {
-        appendErrorsToForm($form, errors);
-        scrollToFirstError($form);
+        if ($form.hasAttr('toast-errors')) {
+            Object.values(errors).forEach((messages) => toastify().error(Object.values(messages)[0]));
+            markInvalidInputs($form, errors);
+        } else {
+            appendErrorsToForm($form, errors);
+            scrollToFirstError($form);
+        }
     }
 
     return false;
@@ -322,6 +327,48 @@ function appendErrorsToForm($form, errors = {}) {
         }
 
         $feedback.html(`<strong>${message}</strong>`);
+
+        if ($input.closest('.input-group').length) {
+            $input.closest('.input-group').addClass('has-invalid-feedback');
+        }
+
+        $input.parents('.tab-pane').each(function () {
+            const tabpane = $(this).attr('id');
+            $(`[href="#${tabpane}"]`).addClass('has-invalid-feedback');
+        });
+    }
+}
+
+/**
+ * Mark the inputs matching the given errors as invalid, without appending
+ * any inline feedback message.
+ *
+ * @param {object} $form
+ * @param {object} errors
+ * @returns {void}
+ */
+function markInvalidInputs($form, errors = {}) {
+    $form.find('.is-invalid').removeClass('is-invalid');
+    $form.find('.has-invalid-feedback').removeClass('has-invalid-feedback');
+
+    for (const key of Object.keys(errors)) {
+        const normalizedKey = key.replace(/\.([^\.]+)/g, '[$1]');
+        const possibleKeys = [key, `${key}[]`, normalizedKey, `${normalizedKey}[]`];
+
+        let $input = $form.find(possibleKeys.map((key) => `[name="${key}"]`).join(', '));
+
+        // If the input is not found, try to find it by the validation key.
+        if ($input.length === 0) {
+            $form.find(`[validation-key]`).each(function () {
+                const key = $(this).attr('validation-key');
+
+                if (possibleKeys.includes($(this).attr(key))) {
+                    $input = $(this);
+                }
+            });
+        }
+
+        $input.addClass('is-invalid');
 
         if ($input.closest('.input-group').length) {
             $input.closest('.input-group').addClass('has-invalid-feedback');

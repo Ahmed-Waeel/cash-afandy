@@ -48,6 +48,11 @@ return Sidebar::make([
                 ->route('dashboard.static-pages.index')
                 ->icon('fa fa-file-text')
                 ->hidden(config('redot.features.website.enabled') === false),
+
+            Item::make()
+                ->title(__('Subscribers'))
+                ->route('dashboard.subscribers.index')
+                ->icon('fa fa-envelope'),
         ]),
 
     Item::make()

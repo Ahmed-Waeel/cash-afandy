@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-12 col-lg-4">
-                <x-form>
+                <x-form route="website.subscribers.store" method="POST" toast-errors>
                     <h5>{{ __('Subscribe Now') }}</h5>
 
                     <div class="site-footer-subscribe input-group mb-3">
