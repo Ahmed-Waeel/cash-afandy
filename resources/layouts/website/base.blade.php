@@ -1,6 +1,11 @@
 <x-layouts::scaffold :title="$title" :inline="$inline" {{ $attributes->class($inline ? 'inline-layout' : 'standard-layout') }}>
     @themer('website-theme')
 
+    {{-- Website styles aren't dark-mode ready yet, so force light regardless of system/localStorage preference --}}
+    @push('pre-content')
+        <script>document.documentElement.setAttribute('data-bs-theme', 'light');</script>
+    @endpush
+
     @pushOnce('styles')
         <link rel="stylesheet" href="{{ hashed_asset('vendor/swiper/swiper-bundle.min.css') }}" />
         <link rel="stylesheet" href="{{ hashed_asset('vendor/tabler/css/tabler-flags.min.css') }}" />
