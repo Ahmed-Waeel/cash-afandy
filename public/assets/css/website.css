@@ -20,6 +20,15 @@
     --Light-Orange: #EDB015FF;
 }
 
+/* ============================================================
+Forms
+============================================================ */
+[dir='rtl'] input,
+[dir='rtl'] textarea,
+[dir='rtl'] select {
+    direction: rtl;
+}
+
 footer .nav .nav-item .nav-link:hover {
     background-color: unset;
     color: var(--tblr-primary);
