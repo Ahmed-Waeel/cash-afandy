@@ -3,31 +3,23 @@
         @include('website.home.partials.hero-slider')
     @endif
 
-    <div class="container">
-        <div class="row row-deck row-cards">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body" style="height: 10rem"></div>
-                </div>
-            </div>
+    @if (! empty($coupons))
+        @include('website.home.partials.latest-coupons')
+    @endif
 
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body" style="height: 10rem"></div>
-                </div>
-            </div>
+    @if (! empty($cashbackStores))
+        @include('website.home.partials.latest-cashback-stores')
+    @endif
 
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body" style="height: 10rem"></div>
-                </div>
-            </div>
+    @if (! empty($cashbackSteps))
+        @include('website.home.partials.how-to-get-cashback')
+    @endif
 
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body" style="height: 10rem"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @if ($clients->isNotEmpty())
+        @include('website.home.partials.our-partners')
+    @endif
+
+    @if (! empty($testimonials))
+        @include('website.home.partials.testimonials')
+    @endif
 </x-layouts::website>
