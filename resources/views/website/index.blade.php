@@ -11,9 +11,7 @@
         @include('website.home.partials.latest-cashback-stores')
     @endif
 
-    @if (! empty($cashbackSteps))
-        @include('website.home.partials.how-to-get-cashback')
-    @endif
+    @include('website.home.partials.how-to-get-cashback')
 
     @if ($clients->isNotEmpty())
         @include('website.home.partials.our-partners')

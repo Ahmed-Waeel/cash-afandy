@@ -8,26 +8,73 @@
         </div>
 
         <div class="row">
-            @php
-                $stepColors = ['var(--Lightest-Red)', 'var(--Light-Red)', 'var(--Dark-Red)', 'var(--Darkest-Red)'];
-            @endphp
+            <div class="col-6 col-lg-3 text-center mb-4 mb-lg-0">
+                <div class="site-cashback-orbit mx-auto mb-3" style="--step-color: var(--Lightest-Red)">
+                    <span class="site-cashback-node site-cashback-node-start"></span>
+                    <span class="site-cashback-node site-cashback-node-end"></span>
 
-            @foreach ($cashbackSteps as $index => $step)
-                <div class="col-6 col-lg-3 text-center mb-4 mb-lg-0">
-                    <div class="site-cashback-orbit mx-auto mb-3 {{ ($index + 1) % 2 === 0 ? 'site-cashback-orbit-reverse' : '' }}"
-                        style="--step-color: {{ $stepColors[$index % 4] }}">
-                        <span class="site-cashback-node site-cashback-node-start"></span>
-                        <span class="site-cashback-node site-cashback-node-end"></span>
-
-                        <div class="site-cashback-circle">
-                            <span class="site-cashback-number">{{ sprintf('%02d', $index + 1) }}</span>
-                        </div>
+                    <div class="site-cashback-circle">
+                        <span class="site-cashback-number">01</span>
                     </div>
-
-                    <h4 class="mb-2">{{ $step['title'] }}</h4>
-                    <p class="text-body-secondary small mb-0">{{ $step['description'] }}</p>
                 </div>
-            @endforeach
+
+                <h4 class="mb-2">Sign up on {{ app_name() }}</h4>
+                <p class="text-body-secondary small mb-0">
+                    Easily create a new account on {{ app_name() }} or log in if you already have an account
+                </p>
+            </div>
+
+            <div class="col-6 col-lg-3 text-center mb-4 mb-lg-0">
+                <div class="site-cashback-orbit site-cashback-orbit-reverse mx-auto mb-3"
+                    style="--step-color: var(--Light-Red)">
+                    <span class="site-cashback-node site-cashback-node-start"></span>
+                    <span class="site-cashback-node site-cashback-node-end"></span>
+
+                    <div class="site-cashback-circle">
+                        <span class="site-cashback-number">02</span>
+                    </div>
+                </div>
+
+                <h4 class="mb-2">Browse the cashback section</h4>
+                <p class="text-body-secondary small mb-0">
+                    You will find many featured stores on {{ app_name() }}, all you have to do is choose one of
+                    them
+                </p>
+            </div>
+
+            <div class="col-6 col-lg-3 text-center mb-4 mb-lg-0">
+                <div class="site-cashback-orbit mx-auto mb-3" style="--step-color: var(--Dark-Red)">
+                    <span class="site-cashback-node site-cashback-node-start"></span>
+                    <span class="site-cashback-node site-cashback-node-end"></span>
+
+                    <div class="site-cashback-circle">
+                        <span class="site-cashback-number">03</span>
+                    </div>
+                </div>
+
+                <h4 class="mb-2">Complete the purchase</h4>
+                <p class="text-body-secondary small mb-0">
+                    Go to the store and complete the purchase process as usual without any additional steps
+                </p>
+            </div>
+
+            <div class="col-6 col-lg-3 text-center mb-4 mb-lg-0">
+                <div class="site-cashback-orbit site-cashback-orbit-reverse mx-auto mb-3"
+                    style="--step-color: var(--Darkest-Red)">
+                    <span class="site-cashback-node site-cashback-node-start"></span>
+                    <span class="site-cashback-node site-cashback-node-end"></span>
+
+                    <div class="site-cashback-circle">
+                        <span class="site-cashback-number">04</span>
+                    </div>
+                </div>
+
+                <h4 class="mb-2">Wait for the cashback in your account</h4>
+                <p class="text-body-secondary small mb-0">
+                    Wait for the cashback amount to appear in your account on {{ app_name() }}, then you can
+                    withdraw it later
+                </p>
+            </div>
         </div>
     </div>
 </section>

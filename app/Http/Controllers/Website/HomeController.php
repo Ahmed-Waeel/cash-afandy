@@ -66,25 +66,6 @@ class HomeController extends Controller
             ],
         ];
 
-        $cashbackSteps = [
-            [
-                'title' => 'Sign up on ' . app_name(),
-                'description' => 'Easily create a new account on ' . app_name() . ' or log in if you already have an account',
-            ],
-            [
-                'title' => 'Browse the cashback section',
-                'description' => 'You will find many featured stores on ' . app_name() . ', all you have to do is choose one of them',
-            ],
-            [
-                'title' => 'Complete the purchase',
-                'description' => 'Go to the store and complete the purchase process as usual without any additional steps',
-            ],
-            [
-                'title' => 'Wait for the cashback in your account',
-                'description' => 'Wait for the cashback amount to appear in your account on ' . app_name() . ', then you can withdraw it later',
-            ],
-        ];
-
         // Temporary example data — will be fetched from the Coupon model later.
         $coupons = [
             [
@@ -167,7 +148,6 @@ class HomeController extends Controller
             'sliders' => $sliders,
             'clients' => $clients,
             'testimonials' => $testimonials,
-            'cashbackSteps' => $cashbackSteps,
             'coupons' => $coupons,
             'cashbackStores' => $cashbackStores,
         ]);

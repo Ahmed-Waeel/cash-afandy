@@ -307,10 +307,6 @@ How To Get Cashback
     animation-direction: reverse;
 }
 
-.site-cashback-orbit:hover {
-    animation-play-state: paused;
-}
-
 .site-cashback-node {
     position: absolute;
     top: 50%;
@@ -339,6 +335,11 @@ How To Get Cashback
     background-color: var(--White);
     border: 0.5rem solid var(--step-color);
     border-radius: 50%;
+    animation: site-cashback-orbit-spin 8s linear infinite reverse;
+}
+
+.site-cashback-orbit-reverse .site-cashback-circle {
+    animation-direction: normal;
 }
 
 .site-cashback-number {
