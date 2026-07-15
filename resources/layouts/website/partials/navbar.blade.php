@@ -10,7 +10,7 @@
     <div class="site-navbar-top">
         <div class="container justify-content-between d-flex align-items-center gap-3">
             <a class="navbar-brand my-2" href="{{ route('website.index') }}">
-                <x-logo />
+                <x-logo class="logo" />
             </a>
 
             <form action="#" method="GET" class="site-navbar-search input-icon flex-fill d-none d-lg-flex">

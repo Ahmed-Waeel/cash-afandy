@@ -60,23 +60,12 @@ Navbar
 Hero Slider
 ============================================================ */
 .site-hero-slider .swiper-slide {
-    height: 26rem;
+    height: calc(100dvh - var(--site-navbar-height, 5rem));
+    min-height: 26rem;
 }
 
 .site-hero-slider .swiper-slide>div {
     height: 100%;
-}
-
-@media (min-width: 768px) {
-    .site-hero-slider .swiper-slide {
-        height: 32rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .site-hero-slider .swiper-slide {
-        height: 38rem;
-    }
 }
 
 /* ============================================================
@@ -104,7 +93,11 @@ Form Check (Radio)
 }
 
 .site-navbar .navbar-brand {
-    max-height: 2rem;
+    max-height: 1rem;
+}
+
+.site-navbar .logo {
+    max-width: 80%;
 }
 
 .site-navbar .flag {
@@ -113,7 +106,7 @@ Form Check (Radio)
 }
 
 .site-navbar-top .container {
-    padding-block: 1rem;
+    padding-block: 0.625rem;
 }
 
 .site-navbar-search {
@@ -156,6 +149,7 @@ Form Check (Radio)
 .site-navbar-links .nav-link {
     color: var(--Black);
     font-weight: 500;
+    font-size: 1.0625rem;
     padding-block: 0.875rem;
 }
 
