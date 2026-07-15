@@ -137,6 +137,12 @@ Form Check (Radio)
     padding-block: 0;
 }
 
+@media (max-width: 991.98px) {
+    .site-navbar-bottom:has(#site-navbar-collapse:not(.show)) {
+        display: none;
+    }
+}
+
 .site-navbar .dropdown-menu,
 .site-navbar-bottom .dropdown-menu {
     z-index: 1051;
@@ -153,7 +159,8 @@ Form Check (Radio)
     padding-block: 0.875rem;
 }
 
-.site-navbar-cta .btn {
+.site-navbar-cta .brand-btn,
+.site-deals-card .brand-btn {
     min-height: 25px;
     max-height: 25px;
     padding-block: 0rem;

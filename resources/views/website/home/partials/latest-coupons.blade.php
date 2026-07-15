@@ -42,7 +42,7 @@
                                 <p class="site-deals-content text-body-secondary mb-3">
                                     {{ $coupon['description'] }}
                                 </p>
-                                <a href="#" class="btn btn-outline-brand btn-sm rounded-pill px-4">
+                                <a href="#" class="btn btn-outline-brand brand-btn">
                                     {{ __('Get it now') }}
                                 </a>
                             </div>

@@ -2,10 +2,9 @@ $(() => {
     let $navbarTop = $('.site-navbar');
     let $navbarBottom = $('.site-navbar-bottom');
 
-    if (!$navbarTop.length && !$navbarBottom.length) return;
-
     let setNavbarHeightVar = () => {
-        let height = ($navbarTop.outerHeight() || 0) + ($navbarBottom.outerHeight() || 0);
+        let navbarBottomHeight = $navbarBottom.is(':visible') ? $navbarBottom.outerHeight() : 0;
+        let height = ($navbarTop.outerHeight() || 0) + navbarBottomHeight;
 
         $(document.documentElement).css('--site-navbar-height', `${height}px`);
     };

@@ -140,11 +140,11 @@
                         </div>
                     @else
                         <div class="site-navbar-cta d-flex gap-2">
-                            <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
+                            <a href="{{ route('website.register') }}" class="btn btn-outline-brand brand-btn">
                                 {{ __('Subscribe') }}
                             </a>
 
-                            <a href="{{ route('website.login') }}" class="btn btn-brand">
+                            <a href="{{ route('website.login') }}" class="btn btn-brand brand-btn">
                                 {{ __('Login') }}
                             </a>
                         </div>
