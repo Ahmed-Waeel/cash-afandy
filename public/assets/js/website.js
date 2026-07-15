@@ -20,3 +20,20 @@ $(() => {
         if ($navbarBottom.length) observer.observe($navbarBottom[0]);
     }
 });
+
+$(() => {
+    let $cta = $('.site-navbar-cta').children('.btn');
+
+    if (!$cta.length) return;
+
+    let equalizeCtaWidth = () => {
+        $cta.css('width', 'auto');
+
+        let maxWidth = Math.max(...$cta.map((_, el) => $(el).outerWidth()).get());
+
+        $cta.css('width', maxWidth);
+    };
+
+    equalizeCtaWidth();
+    $(window).on('resize', equalizeCtaWidth);
+});

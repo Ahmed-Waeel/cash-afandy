@@ -139,13 +139,15 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
-                            {{ __('Subscribe') }}
-                        </a>
+                        <div class="site-navbar-cta d-flex gap-2">
+                            <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
+                                {{ __('Subscribe') }}
+                            </a>
 
-                        <a href="{{ route('website.login') }}" class="btn btn-brand">
-                            {{ __('Login') }}
-                        </a>
+                            <a href="{{ route('website.login') }}" class="btn btn-brand">
+                                {{ __('Login') }}
+                            </a>
+                        </div>
                     @endauth
 
                     @if ($currentCountry)

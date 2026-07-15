@@ -97,7 +97,7 @@ Form Check (Radio)
 }
 
 .site-navbar .logo {
-    max-width: 80%;
+    max-width: 70%;
 }
 
 .site-navbar .flag {
@@ -149,8 +149,17 @@ Form Check (Radio)
 .site-navbar-links .nav-link {
     color: var(--Black);
     font-weight: 500;
-    font-size: 1.0625rem;
+    font-size: 1rem;
     padding-block: 0.875rem;
+}
+
+.site-navbar-cta .btn {
+    min-height: 25px;
+    max-height: 25px;
+    padding-block: 0rem;
+    padding-inline: 1.25rem;
+    font-size: 0.875rem;
+    font-weight: bold;
 }
 
 /* ============================================================
@@ -324,7 +333,7 @@ How To Get Cashback
     width: 9rem;
     height: 9rem;
     max-width: 100%;
-    border: 1px solid var(--step-color);
+    border: 2px solid var(--step-color);
     border-radius: 50%;
     animation: site-cashback-orbit-spin 8s linear infinite;
 }
@@ -354,12 +363,12 @@ How To Get Cashback
 
 .site-cashback-circle {
     position: absolute;
-    inset: 0.75rem;
+    inset: 0.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--White);
-    border: 0.5rem solid var(--step-color);
+    border: 1rem solid var(--step-color);
     border-radius: 50%;
     animation: site-cashback-orbit-spin 8s linear infinite reverse;
 }
