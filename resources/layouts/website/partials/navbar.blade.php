@@ -68,105 +68,105 @@
             </button>
         </div>
     </div>
+</header>
 
-    <nav class="site-navbar-bottom navbar navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-collapse collapse" id="site-navbar-collapse">
-                <form action="#" method="GET" class="site-navbar-search input-icon d-flex d-lg-none my-3">
-                    <input type="search" class="form-control" placeholder="{{ __('Search') }}..." />
-                    <span class="input-icon-addon">
-                        <i class="fa fa-search"></i>
-                    </span>
-                </form>
+<nav class="site-navbar-bottom navbar navbar-expand-lg">
+    <div class="container">
+        <div class="navbar-collapse collapse" id="site-navbar-collapse">
+            <form action="#" method="GET" class="site-navbar-search input-icon d-flex d-lg-none my-3">
+                <input type="search" class="form-control" placeholder="{{ __('Search') }}..." />
+                <span class="input-icon-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+            </form>
 
-                <div
-                    class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center w-100 gap-2 gap-lg-3">
-                    <ul class="navbar-nav site-navbar-links">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Coupons') }}</a>
-                        </li>
+            <div
+                class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center w-100 gap-2 gap-lg-3">
+                <ul class="navbar-nav site-navbar-links">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Coupons') }}</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Cashback') }}</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Cashback') }}</a>
+                    </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                {{ __('Categories') }}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            {{ __('Categories') }}
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <span class="dropdown-item-text text-secondary small">{{ __('Coming soon') }}</span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Articles') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('News') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Offers') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('About Us') }}</a>
+                    </li>
+                </ul>
+
+                <div class="site-navbar-auth d-flex flex-column flex-lg-row gap-2 my-3 my-lg-0">
+                    @auth('users')
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+                                data-bs-toggle="dropdown">
+                                <span class="nav-link-icon"><i class="fa fa-user"></i></span>
+                                {{ current_user()->full_name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="{{ route('website.profile.edit') }}" class="dropdown-item">
+                                    <span class="dropdown-item-title">{{ __('Profile') }}</span>
+                                </a>
+
+                                <a href="#" class="dropdown-item"
+                                    onclick="event.preventDefault(); $('#logout').submit()">
+                                    <span class="dropdown-item-title">{{ __('Logout') }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
+                            {{ __('Subscribe') }}
+                        </a>
+
+                        <a href="{{ route('website.login') }}" class="btn btn-brand">
+                            {{ __('Login') }}
+                        </a>
+                    @endauth
+
+                    @if ($currentCountry)
+                        <div class="dropdown d-flex d-lg-none align-items-center gap-3 mt-2">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <span class="flag flag-country-{{ $currentCountry->code }}"></span>
+                                {{ app()->getLocale() === 'ar' ? $currentCountry->native : $currentCountry->name }}
                             </a>
 
                             <div class="dropdown-menu">
-                                <span class="dropdown-item-text text-secondary small">{{ __('Coming soon') }}</span>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Articles') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('News') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Offers') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('About Us') }}</a>
-                        </li>
-                    </ul>
-
-                    <div class="site-navbar-auth d-flex flex-column flex-lg-row gap-2 my-3 my-lg-0">
-                        @auth('users')
-                            <div class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
-                                    data-bs-toggle="dropdown">
-                                    <span class="nav-link-icon"><i class="fa fa-user"></i></span>
-                                    {{ current_user()->full_name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="{{ route('website.profile.edit') }}" class="dropdown-item">
-                                        <span class="dropdown-item-title">{{ __('Profile') }}</span>
+                                @foreach ($availableCountries as $country)
+                                    <a class="dropdown-item" href="{{ url()->current() }}?country={{ $country->code }}">
+                                        <span class="flag flag-country-{{ $country->code }}"></span>
+                                        {{ app()->getLocale() === 'ar' ? $country->native : $country->name }}
                                     </a>
-
-                                    <a href="#" class="dropdown-item"
-                                        onclick="event.preventDefault(); $('#logout').submit()">
-                                        <span class="dropdown-item-title">{{ __('Logout') }}</span>
-                                    </a>
-                                </div>
+                                @endforeach
                             </div>
-                        @else
-                            <a href="{{ route('website.register') }}" class="btn btn-outline-brand">
-                                {{ __('Subscribe') }}
-                            </a>
-
-                            <a href="{{ route('website.login') }}" class="btn btn-brand">
-                                {{ __('Login') }}
-                            </a>
-                        @endauth
-
-                        @if ($currentCountry)
-                            <div class="dropdown d-flex d-lg-none align-items-center gap-3 mt-2">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                    <span class="flag flag-country-{{ $currentCountry->code }}"></span>
-                                    {{ app()->getLocale() === 'ar' ? $currentCountry->native : $currentCountry->name }}
-                                </a>
-
-                                <div class="dropdown-menu">
-                                    @foreach ($availableCountries as $country)
-                                        <a class="dropdown-item" href="{{ url()->current() }}?country={{ $country->code }}">
-                                            <span class="flag flag-country-{{ $country->code }}"></span>
-                                            {{ app()->getLocale() === 'ar' ? $country->native : $country->name }}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>

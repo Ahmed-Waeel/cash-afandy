@@ -136,8 +136,17 @@ Form Check (Radio)
 }
 
 .site-navbar-bottom {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background-color: var(--White);
     border-top: 1px solid var(--Meduim-Gray);
     padding-block: 0;
+}
+
+.site-navbar .dropdown-menu,
+.site-navbar-bottom .dropdown-menu {
+    z-index: 1051;
 }
 
 .site-navbar-bottom .navbar-nav {
