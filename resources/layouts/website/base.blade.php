@@ -20,7 +20,7 @@
         @endif
 
         <div class="page-wrapper">
-            <div class="page-body">
+            <div class="page-body mt-0">
                 {{ $slot }}
             </div>
         </div>
